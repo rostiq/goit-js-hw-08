@@ -13,16 +13,15 @@ function formDataInput(event) {
     event.preventDefault();
     formData[event.target.name] = event.target.value;
     localStorage.setItem("feedback-form-state", JSON.stringify(formData));
-    console.log(JSON.stringify(formData));
 };
 
 formRef.addEventListener("submit", (event) => {
     if (Object.values(formData).includes("")) {
-        event.preventDefault();
         alert("Заповніть всі поля форми");
         return;
     }
-
+    
+    event.preventDefault();
     localStorage.removeItem("feedback-form-state");
     event.currentTarget.reset();
     console.log(formData);
